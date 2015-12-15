@@ -1,0 +1,29 @@
+tasks:
+	@echo
+	@echo Makefile for ECS
+	@echo
+	@echo Usage: make [task]
+	@echo
+	@echo Tasks:
+	@python -c 'from task_list import task_list; task_list()' < Makefile
+	@echo
+
+TF_PLAN := terraform plan \
+             -var 'access_key=AKxxxxxxxxxxxxxxxxxx' \
+             -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
+             -var 'ssh_key_name=your-key-name' \
+             -var 'subnet=subnet-xxxxxxxx' \
+             -var 'securiy_group=sg-xxxxxxxx'
+
+TF_APPLY := terraform apply \
+             -var 'access_key=AKxxxxxxxxxxxxxxxxxx' \
+             -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
+             -var 'ssh_key_name=your-key-name' \
+             -var 'subnet=subnet-xxxxxxxx' \
+             -var 'securiy_group=sg-xxxxxxxx'
+
+###
+tf-plan:
+	@$(TF_PLAN)
+tf-apply:
+	@$(TF_APPLY)

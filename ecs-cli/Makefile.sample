@@ -1,0 +1,27 @@
+tasks:
+	@echo
+	@echo Makefile for ECS
+	@echo
+	@echo Usage: make [task]
+	@echo
+	@echo Tasks:
+	@python -c 'from task_list import task_list; task_list()' < Makefile
+	@echo
+#
+UP := ecs-cli up --keypair your-key-name \
+        --capability-iam \
+        --vpc vpc-xxxxxxx \
+        --instance-type t2.micro \
+        --subnets subnet-xxxxxxxx,subnet-xxxxxxxx \
+        --azs ap-northeast-1a,ap-northeast-1c \
+        --security-group sg-xxxxxxx
+
+CONTAINER_LIST := aws ecs list-container-instances --cluster $(ECS_CLUSTER)
+DESCRIBE_CONTAINER := aws ecs describe-container-instances --cluster $(ECS_CLUSTER) --container-instances $(ECS_ARN)
+#
+ecs-up: # ECS Cluster up
+	@$(UP)
+ecs-list-container-instances: # list up ECS Container instances. Require environment variable 'ECS_CLUSTER'
+	$(CONTAINER_LIST)
+ecs-describe-container-instances: # describe ECS Container instances. Require environment variable 'ECS_CLUSTER' and 'ECS_ARN'
+	$(DESCRIBE_CONTAINER)

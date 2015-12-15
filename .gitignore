@@ -1,0 +1,5 @@
+terraform/Makefile
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+ecs-cli/Makefile
+*.pyc
