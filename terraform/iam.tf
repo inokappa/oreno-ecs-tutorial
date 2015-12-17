@@ -50,6 +50,14 @@ resource "aws_iam_role_policy" "ecs_iam_role" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }
