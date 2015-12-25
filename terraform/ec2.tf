@@ -8,7 +8,7 @@ resource "aws_instance" "oreno_tf_test" {
   subnet_id = "${var.subnet}"
   associate_public_ip_address = true
   vpc_security_group_ids = ["${var.securiy_group}"]
-  iam_instance_profile = "${aws_iam_role_policy.ecs_iam_role.name}"
+  iam_instance_profile = "${aws_iam_role.ecs_iam_role.name}"
   key_name = "${var.ssh_key_name}"
   tags = {
     Name = "${lookup(var.tag_names, count.index)}"
@@ -34,7 +34,7 @@ docker run --name ecs-agent \
 --env=ECS_LOGFILE=/log/ecs-agent.log \
 --env=ECS_LOGLEVEL=info \
 --env=ECS_DATADIR=/data \
---env=ECS_CLUSTER="${aws_ecs_cluster.oreno_ecs_cluster.name}" \
+--env=ECS_CLUSTER="${aws_ecs_cluster.oreno-cluster.name}" \
 amazon/amazon-ecs-agent:latest
 EOT
 }

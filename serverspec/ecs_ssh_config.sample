@@ -1,0 +1,4 @@
+Host ecs
+  hostname xxx.xxx.xxx.xxx
+  user ubuntu
+  IdentityFile ~/.ssh/key.pem

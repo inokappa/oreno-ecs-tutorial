@@ -13,17 +13,29 @@ TF_PLAN := terraform plan \
              -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
              -var 'ssh_key_name=your-key-name' \
              -var 'subnet=subnet-xxxxxxxx' \
-             -var 'securiy_group=sg-xxxxxxxx'
+             -var 'securiy_group=sg-xxxxxxxx' \
+			 -var 'ecr_repository_arn=xxxxxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/oreno-docker-repo'
 
 TF_APPLY := terraform apply \
              -var 'access_key=AKxxxxxxxxxxxxxxxxxx' \
              -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
              -var 'ssh_key_name=your-key-name' \
              -var 'subnet=subnet-xxxxxxxx' \
-             -var 'securiy_group=sg-xxxxxxxx'
+             -var 'securiy_group=sg-xxxxxxxx' \
+			 -var 'ecr_repository_arn=xxxxxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/oreno-docker-repo'
+
+TF_DESTROY := terraform destroy \
+             -var 'access_key=AKxxxxxxxxxxxxxxxxxx' \
+             -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
+             -var 'ssh_key_name=your-key-name' \
+             -var 'subnet=subnet-xxxxxxxx' \
+             -var 'securiy_group=sg-xxxxxxxx' \
+			 -var 'ecr_repository_arn=xxxxxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/oreno-docker-repo'
 
 ###
 tf-plan:
 	@$(TF_PLAN)
 tf-apply:
 	@$(TF_APPLY)
+tf-destroy
+	@$(TF_DESTROY)

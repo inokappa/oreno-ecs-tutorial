@@ -9,7 +9,7 @@ output "EC2 Instance ID" {
 }
 
 output "ECS Cluster Name" {
-    value = "${aws_ecs_cluster.oreno_ecs_cluster.name}"
+    value = "${aws_ecs_cluster.oreno-cluster.name}"
 }
 
 output "CloudWatch Logs Log Group Name" {

@@ -1,6 +1,6 @@
 #
 # Create ECS cluster
 #
-resource "aws_ecs_cluster" "oreno_ecs_cluster" {
+resource "aws_ecs_cluster" "oreno-cluster" {
   name = "oreno-cluster"
 }
